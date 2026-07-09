@@ -5,6 +5,10 @@
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.1": *
 
+// defaults
+#show link: set text(blue)
+#show link: underline
+
 // initialize codly and set defaults
 #show: codly-init.with()
 #codly(
@@ -14,18 +18,55 @@
 
 // Make the paper dimensions fit for a presentation and the text larger
 #set page(paper: "presentation-4-3")
-#set text(size: 20pt, font: "DejaVu Sans Mono")
+#set text(size: 20pt, font: "Open Sans")
 
 // Use #slide to create a slide and style it using your favourite Typst functions
 #slide[
   = Modern Python Project Management for Researchers with `uv`.
 
-  #set align(horizon)
-  _Elio Balestrieri_
+  #place(horizon, dy : -15%)[
+    _Elio Balestrieri_
 
-  #ez-today.today()
+    #ez-today.today()
+  ]
+
+  #place(right + bottom, dy: -15%)[
+    #figure(
+        image("assets/uni-ms-logo.svg",
+          width: 40%)
+    )
+  ]
+  #place(right + bottom, dy: 10%)[
+    #figure(
+        image("assets/hpc-nrw-logo.svg",
+          width: 43%)
+    )
+  ]
+  #place(left + bottom, dy: 5%)[
+    #figure(
+        image("assets/drainbow.png",
+          width: 25%)
+    )
+  ]
+
 
 ]
+
+#slide[
+  == Who am I
+
+  #set align(horizon)
+  - Born in Genoa 🇮🇹
+  - Grew up in San Marino 🇸🇲
+  - PhD & Postdoc in Neuroscience 🧠 at University of Münster 🇩🇪
+  - HPC System Admin 🤖 at University of Münster
+  \
+  #uncover(2)[
+  Enthusiastic about many things... Relevant here: *good*, *open* *scientific software* and *reproducibility* of scientific workflows.
+  ]
+
+]
+
 
 #slide[
   == What is `uv`?
@@ -38,11 +79,12 @@
 #slide[
   == 🤔 And why should I care?
 
-  #set align(horizon)
-  - Extremely fast
-  - Very versatile for both new and existing projects
-  - It feels like "this is how it was supposed to be done"
-
+  #uncover(2)[
+    #set align(horizon)
+    - Extremely fast
+    - Very versatile for both new and existing projects
+    - It feels like "this is how it was supposed to be done"
+  ]
 ]
 
 #slide[
@@ -52,7 +94,9 @@
   #uncover(2)[
     There is one, depending on your standpoint on Big Tech:
 
-    As of March 19th 2026, *Astral* (the company behind `uv`) *joined OpenAI* \
+    As of March 19th 2026, *Astral* (the company behind `uv`) *joined OpenAI* #fa-icon("openai")\
+    \
+
     https://astral.sh/blog/openai
 
   ]
@@ -256,20 +300,6 @@
   == Projects in `uv`
 
   #set align(horizon)
-  To add new dependencies:
-  ```sh
-  uv add numpy
-  ```
-  Or alternatively, edit the dependencies list of `pyproject.toml` and run:
-  ```sh
-  uv run main.py
-  ```
-]
-
-#slide[
-  == Projects in `uv`
-
-  #set align(horizon)
   `uv add` is also compatible with requirements.txt
   ```sh
   uv add -r requirements.txt
@@ -309,33 +339,62 @@
   == Single executable scripts
 
   #set align(horizon)
-  todo
+  Although it is _preferable_ to work within a project, you can also declare dependencies as *inline metadata* and run the script as a standalone.
+  \
+  \
+  For example:
+  ```sh
+  uv init --script my-standalone-script.py --python 3.13
+  uv add --script my-standalone-script.py 'numpy' 'pandas' 'matplotlib'
+  ```
 
-  https://docs.astral.sh/uv/guides/scripts/#running-a-script-with-dependencies
+]
 
-  ideas:
-  - create in this repo an example script with the preamble already
+#slide[
+  == Your turn 🫵
+
+  #set align(horizon)
+  *Scenario* \
+  Your supervisor asks for code to reproduce a supplementary figure in your paper. You have a data matrix and you want to ship a single zip file, without hassle. *Crucially* you want to do this quick because the next heat wave is coming  and you want to jump in the closest water pool nearby.
+  \
+  \
+  How can you do that with `uv`?
+
+  https://docs.astral.sh/uv/guides/projects/#managing-dependencies
+
+]
+
+#slide[
+  == Shipping your project
+
+  #set align(horizon)
+  It can be as immediate #footnote[if you don't have #fa-icon("c") code 😇] as:
+
+  ```sh
+  uv build
+  uv publish --token pypi-SeCR3tT0K3N --publish-url https://test.pypi.org/legacy/
+  ```
+
+  For testing your upload on test-pypi. You can even omit the `--publish-url` when you are ready to publish to PyPI.
 
 ]
 
 
 #slide[
-  == uv tools
+  == Useful links
 
   #set align(horizon)
-  todo ?
+  https://docs.astral.sh/uv/
+  https://pydevtools.com/
 
 ]
-
 
 #slide[
-  == uv build
+  ==
 
   #set align(horizon)
-  todo ?
-
+  *_Fin._*
 ]
-
 
 #slide[
   == _Excursus:_ `pyproject.toml` vs `requirements.txt`
@@ -352,12 +411,11 @@
 ]
 
 
-
-
 #slide[
-  == This slide changes!
+  == _Excursus:_ `uv tools`
 
-  You can always see this.
-  // Make use of features like #uncover, #only, and others to create dynamic content
-  #uncover(2)[But this appears later!]
+  #set align(horizon)
+  Seem cool, but tbh I have never used them \
+  https://docs.astral.sh/uv/guides/tools/
+
 ]
