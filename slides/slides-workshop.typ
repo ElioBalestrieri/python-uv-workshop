@@ -116,6 +116,11 @@
 
   #set align(horizon)
   Not much... Decide whether to use it or not, I guess. And if you still want to do that, then let's start!
+  \ 
+  ```sh
+  git clone https://github.com/ElioBalestrieri/python-uv-workshop.git
+  ```
+  
 ]
 
 #slide[
