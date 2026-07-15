@@ -48,8 +48,6 @@
           width: 25%)
     )
   ]
-
-
 ]
 
 #slide[
@@ -64,8 +62,19 @@
   #uncover(2)[
   Enthusiastic about many things... Relevant here: *good*, *open* *scientific software* and *reproducibility* of scientific workflows.
   ]
+]
+
+#slide[
+  == Who are you?
+
+  #set align(horizon)
+  And if you feel like:
+  \ \
+  - What do you use python for?
+  - Why are you curious about a new package manager?
 
 ]
+
 
 
 #slide[
@@ -100,7 +109,6 @@
     https://astral.sh/blog/openai
 
   ]
-
 ]
 
 #slide[
@@ -108,7 +116,6 @@
 
   #set align(horizon)
   Not much... Decide whether to use it or not, I guess. And if you still want to do that, then let's start!
-
 ]
 
 #slide[
@@ -133,7 +140,6 @@
 
   \
   #uncover(2)[How is everybody doing?]
-
 ]
 
 #slide[
@@ -141,7 +147,6 @@
 
   #set align(horizon)
   By ✋: How many of you are familiar with the concept of virtual environment?
-
 ]
 
 #slide[
@@ -153,7 +158,6 @@
   - *Not* checked into source control systems such as *Git*.
   - Considered as *disposable*.
   - *Not* considered as *movable* or *copyable*.
-
 ]
 
 #slide[
@@ -169,7 +173,6 @@
   - no virtual env name #fa-icon("circle-right") `.venv`
   - if python version unavailable #fa-icon("circle-right") `uv` downloads it for you
   - no python version specified #fa-icon("circle-right") system default
-
 ]
 
 #slide[
@@ -190,7 +193,6 @@
   ```powershell
   .venv\Scripts\activate
   ```
-
 ]
 
 #slide[
@@ -209,14 +211,12 @@
     deactivate
     ```
   ]
-
 ]
 
 #slide[
   == `uv venv / pip`
 
   #set align(horizon)
-
   To summarize:
 
   ```sh
@@ -225,14 +225,22 @@
   uv pip install numpy pandas
   deactivate
   ```
+]
 
-  \
-  #uncover(2)[
-    🆒😒 Why do we even need `uv` for this?
+#slide[
+  == Your turn 🫵
 
-    Is this really only about having a fast `pip`?
-  ]
+  #set align(horizon)
+  Create a virtual environment with `uv venv` and install your favorite packages with `uv pip`
 
+  Stuck? Check:
+  https://docs.astral.sh/uv/pip/
+]
+
+#slide[
+  == 🆒😒 Why do we even need `uv` for this?
+  #set align(horizon)
+  Is this really only about having a fast `pip`?
 ]
 
 
@@ -333,7 +341,27 @@
 
   https://docs.astral.sh/uv/guides/projects/#managing-dependencies
 
+  \
+  #uncover(2)[
+    🔄 *alternatively,* if you don't have a project to work with:
+
+    `python-uv-workshop/exercises/migrate-project`
+  ]
 ]
+
+#slide[
+  == Shipping your project
+
+  #set align(horizon)
+  It can be as immediate #footnote[if you don't have #fa-icon("c") code 😇] as:
+
+  ```sh
+  uv build
+  uv publish --token pypi-SeCR3tT0K3N --publish-url https://test.pypi.org/legacy/
+  ```
+  For testing your upload on test-pypi. You can even omit the `--publish-url` when you are ready to publish to PyPI.
+]
+
 
 #slide[
   == Single executable scripts
@@ -355,28 +383,16 @@
 
   #set align(horizon)
   *Scenario* \
-  Your supervisor asks for code to reproduce a supplementary figure in your paper. You have a data matrix and you want to ship a single zip file, without hassle. *Crucially* you want to do this quick because the next heat wave is coming  and you want to jump in the closest water pool nearby.
+  You have one python script that does not require a whole project by itself, and you want to send it around as a standalone.
   \
   \
   How can you do that with `uv`?
+  \
+  \
+  🔄 *alternatively,* you can create a standalone script from `analysis.py` in `python-uv-workshop/exercises/migrate-project`.
 
-  https://docs.astral.sh/uv/guides/projects/#managing-dependencies
-
-]
-
-#slide[
-  == Shipping your project
-
-  #set align(horizon)
-  It can be as immediate #footnote[if you don't have #fa-icon("c") code 😇] as:
-
-  ```sh
-  uv build
-  uv publish --token pypi-SeCR3tT0K3N --publish-url https://test.pypi.org/legacy/
-  ```
-
-  For testing your upload on test-pypi. You can even omit the `--publish-url` when you are ready to publish to PyPI.
-
+  Stuck? Check:
+  https://docs.astral.sh/uv/guides/scripts/#declaring-script-dependencies
 ]
 
 
@@ -385,7 +401,10 @@
 
   #set align(horizon)
   https://docs.astral.sh/uv/
+  \
   https://pydevtools.com/
+  \
+  https://www.reddit.com/r/learnpython/comments/1bmxe6i/whats_the_difference_between_pyprojecttoml/
 
 ]
 

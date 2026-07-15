@@ -23,7 +23,9 @@ Container image for didactic purpose
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& curl https://getmic.ro | bash \
-	&& mv micro /usr/bin 
+	&& mv micro /usr/bin \
+	&& echo 'alias ls="ls --color"' >> /etc/bash.bashrc \
+	&& echo 'alias l="ls -lh"' >> /etc/bash.bashrc
 	
 %environment
 	export TERM="tmux-256color"
@@ -31,6 +33,3 @@ Container image for didactic purpose
 	HOST_COLOR="\[\033[38;5;245m\]"
 	RESET="\[\033[0m\]"
 	export PS1="${NAME_COLOR}\u$RESET@${HOST_COLOR}uv-workshop: $RESET\w \$ "
-	alias ls="ls --color"
-	alias l="ls -lh"
-	
