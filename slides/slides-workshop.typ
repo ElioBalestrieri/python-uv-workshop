@@ -68,10 +68,10 @@
   == Who are you?
 
   #set align(horizon)
-  And if you feel like:
-  \ \
-  - What do you use python for?
-  - Why are you curious about a new package manager?
+  #uncover(2)[Scientist 🧑‍🔬]\
+  #uncover(3)[Developer/System Administrator 🧑‍💻]\
+  #uncover(4)[Curious 🧙]\
+
 
 ]
 
@@ -115,12 +115,15 @@
   == 🤷 Naja, what can we do about it?
 
   #set align(horizon)
-  Not much... Decide whether to use it or not, I guess. And if you still want to do that, then let's start!
-  \ 
+  Not much... Decide whether to use it or not, I guess.
+  \ \
+  #uncover(2)[
+  And if you still want to do that, then let's start!
+  \
   ```sh
   git clone https://github.com/ElioBalestrieri/python-uv-workshop.git
   ```
-  
+  ]
 ]
 
 #slide[
